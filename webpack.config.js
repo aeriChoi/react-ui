@@ -6,7 +6,13 @@ const prod = process.env.NODE_ENV === 'production';
 module.exports = {
   mode: prod ? 'production' : 'development',
   devtool: prod ? 'hidden-source-map' : 'eval',
-  entry: './src/index.tsx',
+  entry: [
+    'babel-polyfill',
+    'react-hot-loader/patch',
+    'react',
+    'react-dom',
+    './src/index.tsx'
+  ],
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
