@@ -1,4 +1,4 @@
-import React, { FC, memo } from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 import { Score, Images } from '../../atoms'
 
@@ -14,12 +14,12 @@ interface Props {
   src?: string;
 }
 
-export const Cards: FC<Props> = memo(({ type, id, title, label, highlight, del, score, des, src  }) => {
+export const Cards = memo<Props>(({ type, id, title, label, highlight, del, score, des, src  }) => {
 
   return (
     <CardContainer type={type}>
       <ImgContainer>
-        {src && <Images src={src} objectFit="cover" />}
+        {src && <Images name={title} src={src} objectFit="cover" />}
       </ImgContainer>
       <InfoContainer type={type}>
         <InfoBox>
