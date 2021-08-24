@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
-import { Cards } from '../../components';
 import { ListContainer, ListItem } from '../../styles';
+import { Cards } from '../../components';
 import { HorizontalListData, VerticalListData } from './CardListData';
 
 interface Props {

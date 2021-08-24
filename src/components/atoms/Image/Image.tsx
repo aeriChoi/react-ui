@@ -10,7 +10,7 @@ interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
 export const Images = memo<ImageProps>(({ name, src, objectFit }) => {
   return (
     <>
-      <Img key={name} src={src} alt={name} objectFit={objectFit} />
+      <Img key={name} src={src} alt={name} aria-label={`${name} 이미지`} objectFit={objectFit} />
     </>
   );
 });

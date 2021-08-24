@@ -45,7 +45,7 @@ export const VerticalListData = [
     highlight: 'Highlight',
     del: 'Crodd Out',
     src: '/images/item.jpeg',
-    score: 5,
+    score: 3,
     des: '실물이 훨씬 예뻐요! 다른 색상도 구매하려고요. 실물이 훨씬 예뻐요! 다른 색상도 구매하려고요.'
   },
   {
@@ -55,7 +55,7 @@ export const VerticalListData = [
     highlight: 'Highlight',
     del: 'Crodd Out',
     src: '/images/item.jpeg',
-    score: 5,
+    score: 1,
     des: '생각했던 색상이 아니에요ㅠ 사진이랑은 많이 다릅니다. 생각했던 색상이 아니에요ㅠ 사진이랑은 많이 다릅니다. 생각했던 색상이 아니에요ㅠ 사진이랑은 많이 다릅니다.'
   },
 ];

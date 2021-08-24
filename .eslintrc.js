@@ -23,7 +23,7 @@ module.exports = {
     SharedArrayBuffer: 'readonly',
   },
   rules: {
-    'react-hooks/exhaustive-deps': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
     'no-console': 'off',
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': 'off',
