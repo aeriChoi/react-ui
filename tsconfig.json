@@ -24,16 +24,28 @@
       "@constants": [
         "constants/index"
       ],
+      "@containers": [
+        "containers/index"
+      ],
+      "@styles": [
+        "styles/index"
+      ],
       "@components/*": [
         "components/*"
       ],
       "@constants/*": [
         "constants/*"
+      ],
+      "@containers/*": [
+        "containers/*"
+      ],
+      "@styles/*": [
+        "styles/*"
       ]
     }
   },
   "exclude": [
-    "node_modules",
+    "node_modules"
   ],
   "include": [
     "**/*.ts",
