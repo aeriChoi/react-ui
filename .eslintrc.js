@@ -14,13 +14,14 @@ module.exports = {
   extends: [
     'airbnb',
     'plugin:react/recommended',
-    'plugin:import/errors',
-    'plugin:import/warnings',
     'plugin:prettier/recommended',
     'plugin:react-hooks/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
+    'prettier',
   ],
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
+  },
   rules: {
     'react-hooks/exhaustive-deps': 'error',
     'no-console': 'off',
