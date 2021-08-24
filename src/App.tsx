@@ -1,8 +1,7 @@
-import React from 'react';
+import React from 'react'
+import { hot } from 'react-hot-loader/root';
 
 const App = () => {
-  console.log('process.env.NODE_ENV', process.env.NODE_ENV);
-
   return (
     <>
       <div>
@@ -12,4 +11,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default hot(App);
