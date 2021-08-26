@@ -31,11 +31,25 @@ module.exports = {
         ]
       },
       {
-        test: /\.jfif$/,
+        test: /\.(png|svg|jpg|gif)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]'
+          publicPath: './public',
+          name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.(png|jpge|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              publicPath: './public',
+              name: '[name].[ext]?[hash]',
+              limit: 8192,
+            },
+          },
+        ],
       },
       {
         test: /\.js$/,
@@ -47,7 +61,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'bundle.js',
-    sourceMapFilename: "[name].js.map"
+    sourceMapFilename: "[name].js.map?[hash]"
   },
   devServer: {
     port: 3000

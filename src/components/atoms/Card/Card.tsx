@@ -4,7 +4,7 @@ import { Score, Images } from '../../atoms'
 
 interface Props {
   type: 'vertical' | 'horizontal';
-  id?: number;
+  id?: string;
   title?: string;
   label?: string;
   highlight?: string;
@@ -18,7 +18,7 @@ export const Cards = memo<Props>(({ type, id, title, label, highlight, del, scor
 
   return (
     <CardContainer type={type}>
-      <ImgContainer>
+      <ImgContainer type={type}>
         {src && <Images name={title} src={src} objectFit="cover" />}
       </ImgContainer>
       <InfoContainer type={type}>
@@ -36,7 +36,7 @@ export const Cards = memo<Props>(({ type, id, title, label, highlight, del, scor
           }
         </InfoBox>
         <ScoreBox type={type}>
-          <Score type={type} score={score} />
+          <Score type={type} id={id} score={score} />
           {type === 'vertical' && des && <Des type={type}>{des}</Des>}
           {type === 'horizontal' && label && <Label>&nbsp;&nbsp;| {label}</Label>}
         </ScoreBox>
@@ -56,7 +56,7 @@ const CardContainer = styled.div<Props>`
   border-radius: 4px;
 `;
 
-const ImgContainer = styled.div`
+const ImgContainer = styled.div<Props>`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -64,6 +64,7 @@ const ImgContainer = styled.div`
   align-items: center;
   width: 100%;
   min-width: 200px;
+  max-width: ${props => (props.type === 'vertical' ? 'auto' : '200px')};
   height: 100%;
   background-color: silver;
 `;
