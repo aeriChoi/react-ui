@@ -34,7 +34,6 @@ module.exports = {
         test: /\.(png|svg|jpg|gif)$/,
         loader: 'file-loader',
         options: {
-          publicPath: './dist',
           name: '[name].[ext]?[hash]'
         }
       },
@@ -44,7 +43,6 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              publicPath: './dist',
               name: '[name].[ext]?[hash]',
               limit: 8192,
             },
