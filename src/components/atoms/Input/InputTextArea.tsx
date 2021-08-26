@@ -5,12 +5,6 @@ interface Props {
   type: 'default' | 'disabled' | 'readonly';
 }
 
-interface FormInputs {
-  default: string;
-  readonly: string;
-  disabled: string;
-}
-
 interface TextAreaProps {
   show: boolean;
   disabled?: boolean;
@@ -20,7 +14,7 @@ export const InputTextArea = memo<Props>(({ type }) => {
 
   const [show, setShow] = useState(false);
   const [disabled, setDisabled] = useState(false);
-  const [init, setInit] = useState<string | undefined>('dkfk');
+  const [formValue, setFormValue] = useState<string | undefined>(undefined);
   const [strLength, setStrLength] = useState(500);
 
   const renderLabel = useCallback((type: string) => {
@@ -45,13 +39,15 @@ export const InputTextArea = memo<Props>(({ type }) => {
   }, [strLength, type]);
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const {value} = e.target;
+    const {value} = e.currentTarget;
     if (type === 'default' && !disabled) {
       handleStrLength(value);
+      setFormValue(value);
       setShow(true);
     }
     if (type === 'default' && disabled) {
       handleStrLength(value);
+      setFormValue(value);
       setDisabled(false);
     }
   }, [type, disabled, handleStrLength]);
@@ -62,24 +58,24 @@ export const InputTextArea = memo<Props>(({ type }) => {
   }, []);
 
   useEffect(() => {
-    if (type === 'readonly') {
-      setInit('읽기 전용 입니다. 읽기 전용 입니다.');
+    if (type === 'readonly' && formValue === undefined) {
+      setFormValue('읽기 전용 입니다. 읽기 전용 입니다.');
     }
-  }, [type]);
+  }, [type, formValue]);
 
   useEffect(() => {
-    if (type === 'readonly' && init) {
-      handleStrLength(init);
+    if (type === 'readonly' && formValue) {
+      handleStrLength(formValue);
     }
-  }, [init]);
+  }, [formValue]);
 
   useEffect(() => {
-    if (type !== 'readonly' && type !== 'disabled' && init) {
-      handleStrLength(init);
+    if (type === 'default' && formValue && !show && !disabled) {
+      handleStrLength(formValue);
       setDisabled(true);
       setShow(true);
     }
-  }, [init]);
+  }, [type, formValue]);
 
   useEffect(() => {
     if (type === 'default' && show && strLength === 500) {
@@ -101,9 +97,9 @@ export const InputTextArea = memo<Props>(({ type }) => {
               placeholder="리뷰를 작성해주세요."
               readOnly={type === 'readonly'}
               disabled={type === 'disabled'}
-              defaultValue={init}
+              value={formValue}
               maxLength={500}
-            />
+             />
               <TextLength>{strLength}</TextLength>
             </TextAreaBox>
             {type === 'default' && show && <input type="submit" className="btn-submit" value="Save" aria-label="저장하기" disabled={disabled} />}

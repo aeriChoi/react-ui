@@ -40,17 +40,3 @@ export const ListItem = styled.li<layOutProps>`
   cursor: pointer;
   transition: 0.3s;
 `;
-
-export const FlexContainer = styled.div<layOutProps>`
-  display: flex;
-  flex-direction: ${props => (props.flexDirection ? `${props.flexDirection}` : 'row')};
-  align-items: ${props => (props.alignItems ? `${props.alignItems}` : 'center')};
-  justify-content: ${props => (props.justifyContent ? `${props.justifyContent}` : 'flex-start')};
-  flex-wrap: ${props => (props.flexWrap ? `${props.flexWrap}` : 'nowrap')};
-  margin: ${props => (props.margin ? `${props.margin}` : '0')};
-  ${props =>
-  props.flexWrap &&
-  css`
-      align-content: stretch;
-    `};
-`;
