@@ -1,6 +1,6 @@
 export const HorizontalListData = [
   {
-    id: 'horizontal-card-루나상점1',
+    id: 1,
     label: '루나상점1',
     title: 'z플립 별자리 폰케이스 z플립 별자리 폰케이스 z플립 별자리 폰케이스 z플립 별자리 폰케이스',
     src: '/images/item.jpeg',
@@ -8,7 +8,7 @@ export const HorizontalListData = [
     des: '실물이 훨씬 예뻐요! 다른 색상도 구매하려고요. 친구들것까지 사서 선물할 생각이에요 >_< 실물이 훨씬 예뻐요! 다른 색상도 구매하려고요. 친구들것까지 사서 선물할 생각이에요 >_<'
   },
   {
-    id: 'horizontal-card-루나상점2',
+    id: 2,
     label: '루나상점2',
     title: 'z플립 별자리 폰케이스 z플립 별자리 폰케이스 z플립 별자리 폰케이스 z플립 별자리 폰케이스',
     src: '/images/item.jpeg',
@@ -19,7 +19,7 @@ export const HorizontalListData = [
 
 export const VerticalListData = [
   {
-    id: 'vertical-card-루나문1',
+    id: 3,
     label: '루나문1',
     title: 'z플립 별자리 폰케이스 z플립 별자리 폰케이스 z플립 별자리 폰케이스',
     highlight: 'Highlight',
@@ -29,7 +29,7 @@ export const VerticalListData = [
     des: '실물이 훨씬 예뻐요! 다른 색상도 구매하려고요. 실물이 훨씬 예뻐요! 다른 색상도 구매하려고요.'
   },
   {
-    id: 'vertical-card-루나문2',
+    id: 4,
     label: '루나문2',
     title: 'z플립 별자리 폰케이스 z플립 별자리 폰케이스',
     highlight: 'Highlight',
@@ -39,7 +39,7 @@ export const VerticalListData = [
     des: '배송은 조금 늦었지만 상품은 예쁩니다~ 배송은 조금 늦었지만 상품은 예쁩니다~'
   },
   {
-    id: 'vertical-card-루나문3',
+    id: 5,
     label: '루나문3',
     title: 'z플립 별자리 폰케이스 z플립 별자리 폰케이스 z플립 별자리 폰케이스',
     highlight: 'Highlight',
@@ -49,7 +49,7 @@ export const VerticalListData = [
     des: '실물이 훨씬 예뻐요! 다른 색상도 구매하려고요. 실물이 훨씬 예뻐요! 다른 색상도 구매하려고요.'
   },
   {
-    id: 'vertical-card-루나문4',
+    id: 6,
     label: '루나문4',
     title: 'z플립 별자리 폰케이스 z플립 별자리 폰케이스 z플립 별자리 폰케이스',
     highlight: 'Highlight',

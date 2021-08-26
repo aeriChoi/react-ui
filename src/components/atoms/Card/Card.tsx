@@ -4,7 +4,7 @@ import { Score, Images } from '../../atoms'
 
 interface Props {
   type: 'vertical' | 'horizontal';
-  id?: string;
+  id?: number;
   title?: string;
   label?: string;
   highlight?: string;
@@ -36,7 +36,7 @@ export const Cards = memo<Props>(({ type, id, title, label, highlight, del, scor
           }
         </InfoBox>
         <ScoreBox type={type}>
-          <Score type={type} id={id} score={score} />
+          <Score type={type} score={score} />
           {type === 'vertical' && des && <Des type={type}>{des}</Des>}
           {type === 'horizontal' && label && <Label>&nbsp;&nbsp;| {label}</Label>}
         </ScoreBox>
