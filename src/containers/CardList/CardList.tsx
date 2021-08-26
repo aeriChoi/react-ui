@@ -8,7 +8,7 @@ interface Props {
 }
 
 interface ListData {
-  id: string;
+  id: number;
   label?: string;
   title?: string;
   highlight?: string;
@@ -90,7 +90,7 @@ export const CardList = memo<Props>(({ type }) => {
 
   return (
     <>
-       <ListContainer key={type}>
+       <ListContainer>
          {renderList(type)}
        </ListContainer>
     </>

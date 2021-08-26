@@ -7,17 +7,17 @@ import { ContensLayout, InputTextArea } from './components';
 const App = () => {
   return (
     <PageContainer>
-      <ContensLayout title="카드 UI (가로형)">
-       <CardList type="horizontal" />
-      </ContensLayout>
-      <ContensLayout title="카드 UI (세로형)">
-       <CardList type="vertical" />
-      </ContensLayout>
-      <ContensLayout title="입력 폼 UI">
+        <ContensLayout title="카드 UI (가로형)">
+          <CardList type="horizontal" />
+        </ContensLayout>
+        <ContensLayout title="카드 UI (세로형)">
+          <CardList type="vertical" />
+        </ContensLayout>
+       <ContensLayout title="입력 폼 UI">
         <InputTextArea type="default"/>
         <InputTextArea type="readonly"/>
         <InputTextArea type="disabled"/>
-      </ContensLayout>
+       </ContensLayout>
     </PageContainer>
   );
 };

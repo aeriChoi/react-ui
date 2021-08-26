@@ -2,7 +2,6 @@ import React, { memo, useCallback } from 'react';
 import styled from 'styled-components';
 
 interface Props {
-  id?: string;
   score?: number;
   type?: string;
 }
@@ -11,16 +10,16 @@ interface ItemProps {
   state?: string;
 }
 
-export const Score = memo<Props>(({ id = '', score = 0, type}) => {
+export const Score = memo<Props>(({ score = 0, type}) => {
 
-  const renderScore = useCallback((id: string, score: number) => {
+  const renderScore = useCallback((score: number) => {
     return (
       <>
         {[...Array(5)].map((i, index) => {
-          const scoreId = `score${index}-${id}`;
+          const scoreId = `score${index}`;
           return (
             <>
-              {score !== 0 && index < score ? <ScoreItem key={scoreId} state='active' /> : <ScoreItem key={id} />}
+              {score !== 0 && index < score ? <ScoreItem key={scoreId} state='active' /> : <ScoreItem key={scoreId} />}
             </>
           )
         })}
@@ -30,7 +29,7 @@ export const Score = memo<Props>(({ id = '', score = 0, type}) => {
 
   return (
     <ScoreWrap>
-      {renderScore(id, score)}
+      {renderScore(score)}
     </ScoreWrap>
   );
 });

@@ -1,5 +1,4 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
-import { useForm } from "react-hook-form";
 import styled from 'styled-components';
 
 interface Props {
@@ -14,19 +13,15 @@ interface FormInputs {
 
 interface TextAreaProps {
   show: boolean;
+  disabled?: boolean;
 }
 
 export const InputTextArea = memo<Props>(({ type }) => {
 
   const [show, setShow] = useState(false);
-  const [defaultFormValue, setDefaultFormValue] = useState<string | undefined>(undefined);
+  const [disabled, setDisabled] = useState(false);
+  const [init, setInit] = useState<string | undefined>('dkfk');
   const [strLength, setStrLength] = useState(500);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm<FormInputs>();
 
   const renderLabel = useCallback((type: string) => {
     switch (type) {
@@ -49,29 +44,42 @@ export const InputTextArea = memo<Props>(({ type }) => {
     }
   }, [strLength, type]);
 
-  const handleChange = useCallback((type: string, e: any) => {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const {value} = e.target;
-    if (type === 'default') {
+    if (type === 'default' && !disabled) {
       handleStrLength(value);
       setShow(true);
     }
-  }, [handleStrLength]);
+    if (type === 'default' && disabled) {
+      handleStrLength(value);
+      setDisabled(false);
+    }
+  }, [type, disabled, handleStrLength]);
 
-  const onSubmit = (data: FormInputs) => {
-    console.log('onSubmit', JSON.stringify(data));
-  };
+  const handleOnSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('handleOnSubmit', e.currentTarget.review.value);
+  }, []);
 
   useEffect(() => {
     if (type === 'readonly') {
-      setDefaultFormValue('읽기 전용 입니다. 읽기 전용 입니다.');
+      setInit('읽기 전용 입니다. 읽기 전용 입니다.');
     }
   }, [type]);
 
   useEffect(() => {
-    if (defaultFormValue) {
-      handleStrLength(defaultFormValue);
+    if (type === 'readonly' && init) {
+      handleStrLength(init);
     }
-  }, [defaultFormValue]);
+  }, [init]);
+
+  useEffect(() => {
+    if (type !== 'readonly' && type !== 'disabled' && init) {
+      handleStrLength(init);
+      setDisabled(true);
+      setShow(true);
+    }
+  }, [init]);
 
   useEffect(() => {
     if (type === 'default' && show && strLength === 500) {
@@ -81,25 +89,24 @@ export const InputTextArea = memo<Props>(({ type }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <TextAreaContainer show={show}>
+      <form onSubmit={handleOnSubmit}>
+        <TextAreaContainer show={show} disabled={disabled}>
           <label htmlFor={type}>{renderLabel(type)}</label>
           <TextAreaWrap>
             <TextAreaBox show={show}>
             <textarea
-              {...register(`${ type }`)}
               aria-label={renderLabel(type)}
-              name={type}
-              onChange={e => {handleChange(type, e)}}
+              name="review"
+              onChange={handleChange}
               placeholder="리뷰를 작성해주세요."
               readOnly={type === 'readonly'}
               disabled={type === 'disabled'}
-              defaultValue={defaultFormValue}
+              defaultValue={init}
               maxLength={500}
             />
               <TextLength>{strLength}</TextLength>
             </TextAreaBox>
-            {type === 'default' && show && <input type="submit" className="btn-submit" value="Save" aria-label="저장하기" />}
+            {type === 'default' && show && <input type="submit" className="btn-submit" value="Save" aria-label="저장하기" disabled={disabled} />}
           </TextAreaWrap>
         </TextAreaContainer>
       </form>
@@ -121,7 +128,12 @@ const TextAreaContainer = styled.div<TextAreaProps>`
   .btn-submit {
     width: ${props => (props.show ? '100px' : '0')};
     height: 100px;
-    cursor: pointer;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    background-color: ${props => (props.disabled ? '#d9d9d9' : '#fff')};
+    color: ${props => (props.disabled ? '#727272' : 'dodgerblue')};
+    font-weight: 600;
+    cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
     transition: 0.5s;
   }
 `;
