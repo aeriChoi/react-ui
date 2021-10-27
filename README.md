@@ -1,7 +1,6 @@
 # React-UI
 
-
-## Demo
+## Live Demo
 
 [https://aerichoi.github.io/react-ui/](http://aerichoi.github.io/react-ui/)
 
